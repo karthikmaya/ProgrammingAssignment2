@@ -1,6 +1,6 @@
 # This programme aims to catche  the inverse of a Matrix and can be used when needed.
 ##----------------------------------------------------------------------------------##
-#(Matrix inversion is usually a costly computation and there may be some
+#(Instruction for the assignment Matrix inversion is usually a costly computation and there may be some
 #benefit to caching the inverse of a matrix rather than computing it
 #repeatedly (there are also alternatives to matrix inversion that we will
 #not discuss here). Your assignment is to write a pair of functions that
@@ -16,8 +16,8 @@
 
 #1.  set the value of the Matrix
 #2.  get the value of the Matrix
-#3.  set the value of inverse of the Matris
-#4.  get the value of inverse of the Matris
+#3.  set the value of inverse of the Matrix
+#4.  get the value of inverse of the Matrix
 
    makeCacheMatrix <- function(x = matrix()) {
             InverVar <- NULL
