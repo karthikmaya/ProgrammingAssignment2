@@ -30,7 +30,7 @@
             getInverVar <- function() InverVar
             list(set = set, get = get, setInverVar = setInverVar, getInverVar = getInverVar)
     }
-  
+ 
 
 ### Second Function - cacheSolve
 
