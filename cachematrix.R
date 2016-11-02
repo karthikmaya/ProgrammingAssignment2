@@ -1,15 +1,67 @@
-## Put comments here that give an overall description of what your
-## functions do
+# This programme aims to catche  the inverse of a Matrix and can be used when needed.
+##----------------------------------------------------------------------------------##
+#(Matrix inversion is usually a costly computation and there may be some
+#benefit to caching the inverse of a matrix rather than computing it
+#repeatedly (there are also alternatives to matrix inversion that we will
+#not discuss here). Your assignment is to write a pair of functions that
+#cache the inverse of a matrix.)
 
-## Write a short comment describing this function
-
-makeCacheMatrix <- function(x = matrix()) {
-
-}
+## In this section, we have two functions
+## 1. makeCacheMatrix
+## 2.cacheSolve
 
 
-## Write a short comment describing this function
+#The first function, `makeCacheMatrix` creates a matrix, which is
+#really a list containing a function to
+
+#1.  set the value of the Matrix
+#2.  get the value of the Matrix
+#3.  set the value of inverse of the Matris
+#4.  get the value of inverse of the Matris
+
+   makeCacheMatrix <- function(x = matrix()) {
+            InverVar <- NULL
+            set <- function(y) {
+                    x <<- y
+                    InverVar <<- NULL
+            }
+            get <- function() x
+            setInverVar <- function(inverse) InverVar<<- inverse
+            getInverVar <- function() InverVar
+            list(set = set, get = get, setInverVar = setInverVar, getInverVar = getInverVar)
+    }
+  
+
+### Second Function - cacheSolve
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+        InverVar <- x$getInverVar()
+        if(!is.null(InverVar)) {
+                message("getting cached data")
+                return(InverVar)
+        }
+        data <- x$get()
+        InverVar <- solve(data, ...)
+        x$setInverVar(InverVar)
+        InverVar
 }
+
+
+#Testing:
+#t= matrix( c(2, 4, 1, 5),nrow=2, ncol=2)
+#q<-makeCacheMatrix (t)
+#q$get()
+#      [,1] [,2]
+#[1,]    2    1
+#[2,]    4    5
+
+#w<-cacheSolve(q)
+#        [,1]       [,2]
+#[1,]  0.8333333 -0.1666667
+#[2,] -0.6666667  0.3333333
+ 
+#solve(w)
+ #     [,1] [,2]
+#[1,]    2    1
+#[2,]    4    5
+
